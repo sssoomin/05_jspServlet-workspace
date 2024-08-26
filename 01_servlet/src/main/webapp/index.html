@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<body>
+<!-- src/main/webapp/index.html : web.xml 파일에서 welcome-file로 등록된 파일(메인페이지)-->
+	
+	<h1>Servlet</h1>
+	
+	<!-- 
+		현재 웹 컨테이너(webapp) 내에 있는 정적 페이지 바로 요청시
+		상대경로로 작성 (항상 경로는 URL 기준으로 생각해야됨)
+		
+		현재 위치 : http://localhost:8888/servlet/
+		이동할 위치 : ./a_lifecycle/main.html (./ : 현재위치(현재URL) 가리킴)
+								 => http://localhost:8888/servlet/a_lifecycle/main.html
+	-->
+	
+	<a href="./a_lifecycle/main.html">1. Servlet 클래스의 LifeCycle</a> <br>
+	
+	<a href="./b_request/main.html">2. HttpServletRequest</a> <br>
+	
+	<a href="">3. HttpServletResponse </a> <br>
+	
+	<a href="">4. Forward</a> <br>
+	
+	<a href="">5. Redirect</a> <br>
+
+</body>
+</html>

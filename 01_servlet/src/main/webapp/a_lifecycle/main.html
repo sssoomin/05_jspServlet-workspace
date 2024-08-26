@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h2>Servlet이란</h2>
+	
+	<p>
+		웹 서비스를 위한 Java 클래스를 의미 <br>
+		Java를 활용해서 웹 개발을 할때 필요한 기술 <br>
+		사용자의 요청을 받아 처리하고 그에 해당하는 결과를 다시 사용자에게 응답하는 역할<br>
+		즉, MVC 패턴 중에 Controller 역할
+	</p>
+	
+	<h3>Servlet의 LifeCycle 확인</h3>
+	
+	<!-- 단순페이지 요청이 아닌 Servlet 요청해보기-->
+	<!--
+		* 작성 URL
+			1. 형식
+				http://host:port/contextPath/URLMapping
+			2. contextPath
+			 1) 웹 애플리케이션을 의미
+			 2) 웹 애플리케이션 생성시 결덩 (Context Root)
+			 3) 프로젝트 속성(Proeperties)에서 변경 가능
+			   ㄴ 프로젝트 우클릭 - Properties - Web Project Settings	
+			3. URLMapping
+			 1) 웹 애플리케이션 내부 경로를 의미
+			 2) 결정방법
+			  (1) Servlet 클래스 생성시 @WebServlet 어노테이션으로 결정
+			  (2) Servlet 클래스 생성후 WEB-INF/web.xml에 등록해서 결정   
+
+	-->
+	
+	<h4>Get방식요청</h4>
+	<!--http://loaclhost:8888/servlet/life -->
+	<a href="../life">Servlet 요청</a> <br> <!--상대경로방식 : 현재보여지는 URL기준으로 작성 -->
+	<a href="/servlet/life">Servlet 요청</a> <!--절대경로방식: 포트번호 바로 뒤에 붙음-->
+	
+	<h4>Post방식요청</h4>
+	<form action="/servlet/life" method="post">
+		<button type="submit">Servlet 요청</button>
+	</form>
+
+</body>
+</html>
