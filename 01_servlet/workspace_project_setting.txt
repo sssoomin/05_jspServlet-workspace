@@ -1,0 +1,103 @@
+### Workspace 환경설정 (한 PC에서 최초에 한번만 하면됨) ###
+  	
+	1. 웹 애플리케이션 개발을 위해 Java EE 환경으로 설정 
+	   ㄴ 이클립스 오른쪽 상단 Open Perspective 에서 선택
+	2. 보여질 UI 탭 세팅
+	   ㄴ [Window] - [Show View]
+	      - Project Explorer
+	      - Package Explorer
+	      - Console
+				- Problems
+				- Servers
+	3. 우클릭 New 목록 커스터마이징 (선택사항)
+	   ㄴ [Window] - [Perspective] - [Customize Perspective] - Shortcuts 탭
+	      - General > File, Folder
+	      - Java    > Class, Interface, Package, Source Folder
+	      - Web			> CSS File, HTML File, JSP File, Dynamic Web Project, Servlet 
+	      - XML     > XML File
+	4. Preferences 세팅
+	   ㄴ [Window] - [Preferences]
+	      ㄴ 인코딩 UTF-8로 설정 
+		       - General > Workspace, Spelling
+		       - Web     > CSS Files, HTML Files, JSP Files
+		       - XML     > XML Files
+	      ㄴ Code Templates 수정 (선택사항)
+	         ㄴ Java > Code Style > Code Templates - Code
+	          	- Method Body      : 주석없애기
+	          	- Catch block Body : 주석없애기
+	      ㄴ Tab Size 수정
+	         ㄴ General > Editors > Text Editors
+	            - Displayed tab width : 2로 수정
+	      ㄴ 개발 Font 수정
+	         ㄴ General > Apperance > Colors and Fonts 
+	            - Basic - Text Font - Edit 버튼 : D2Coding 폰트로 수정
+
+### Server 설정 (이클립스에 연동) ###
+
+	1. Apache Tomcat 사이트 접속 후 사용할 버전 다운로드 받기 (zip으로 받아 압축풀기)
+	2. 압축 풀린 폴더를 C:\dev 에 가져다 두기 (찾기 편한 위치)
+	3. 이클립스 Servers 탭에 새로운 Server 생성 
+	   1) Apache - Tomcat *.* 선택
+	   2) Server's host name : 수정하면안됨 
+	      Server name : 수정가능 (아무이름이나 가능)
+	   3) Tomcal installation Direction 경로 : 2번 과정으로 가져다둔 Tomcat의 경로로 설정
+	   4) Finish
+	4. 생성된 Server 추가 설정 (생성된 서버 더블클릭)
+	   1) Server Options : Serve modules without publishing 체크
+	   2) Ports : HTTP/1.1 포트번호 사용하지 않는 포트번호로 수정 
+	   
+### Dynamic Web Project 생성 (웹 애플리케이션) ###
+
+	1. 프로젝트명 작성
+	2. Dynamic web module version : 서버에 맞게 선택 (수업시간은 Tomcat 9 사용이므로 4.0으로 선택)  > Next
+	3. Default output folder : src/main/webapp/WEB-INF/classes 로 수정 > Next
+	4. Context Root : 기본 프로젝트명, 수정하는걸 권장 
+			ㄴ 해당 애플리케이션의 ContextPath로 지정되어 URL에 매번 작성될 예정 
+			ㄴ 즉, 해당 애플리케이션을 가리키는 고유한 이름이여야됨 (애플리케이션의 식별자)
+	5. Content Directory (src/main/webapp) : 수정하면 안됨 
+	    ㄴ 프로젝트 작업이 다 끝난 후에 서버에 배포되는 폴더의 경로 
+	    ㄴ 웹 컨테이너라고 지칭함 
+	6. Generate Web.xml deployment descriptor : 반드시 체크 
+	7. Finish
+	
+	8. 프로젝트가 잘 세팅되었는지 확인하기 (후에 Git에서 내려받아 Project 오픈 후에도 마찬가지**************************)
+	   [프로젝트 우클릭] > [Properties]
+	   
+	   1) Project Facets
+			  ㄴ Dynamic Web Module : 체크되어있는지, 버전 4.0인지 확인
+			  ㄴ Java : 체크되어있는지, 현재 설치한 자바 버전(17)인지 확인 
+			  ㄴ Runtimes 탭 : 생성해둔 서버 체크 (체크 안해둘 경우 간헐적으로 빨간줄 오류 발생)
+		 2) Web Project Settings 
+		    ㄴ Context Root : 프로젝트 생성시 지정한 이름이 맞는지 확인 (URL에서 사용됨)
+		    
+  * 생성된 프로젝트 폴더 구조 
+    src
+     ㄴ main
+     		 ㄴ java (Source Folder) : 자바 파일(.java), 쿼리문 파일(.xml), db환경설정(.properties) 문서 등 작성
+     		 ㄴ webapp (일반 Folder) : 화면(.html, .jsp), 환경설정 문서(.xml), 정적자원(assets) 등 작성
+     		 		 ㄴ WEB-INF/lib 		: 애플리케이션 구현시 필요한 라이브러리(.jar)
+     		 		 ㄴ WEB-INF/classes : src/main/java 에서 작업한 파일들이 컴파일되서 보관되는 폴더
+     		 		 ㄴ WEB-INF/web.xml : 애플리케이션 배포서술자(DD) 문서
+
+### 생성된 프로젝트를 서버에 올려서 구동하기 ###
+
+	1. [생성된 서버 우클릭] - [Add and Remove]
+	2. 프로젝트 선택 후 Add 버튼 > Finish
+	3. 서버 더블클릭 > Modules 탭에서 프로젝트 잘 올라가있는지 확인 (Context Path 명 확인)
+	4. Server Start 
+	5. 애플리케이션 요청을 위한 URL 
+	   ㄴ http://host:port/contextPath/URLMapping
+	   	  - http://host:port  : 가동중인 서버를 가리킴
+	   	  - /contexPath				: 가동중인 서버 위에서 구동되는 웹 애플리케이션을 가리킴
+	   	  - /URLMapping				: 웹 애플리케이션 내부의 경로를 의미
+	   	  
+	  ex) http://localhost:8888/servlet
+	   	  
+	
+	   
+	   
+	   
+	   
+	   
+	   
+	   
