@@ -73,8 +73,28 @@ public class Request extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		System.out.println("doGet() 메소드 실행");
+		
+		/*
+		 * post 방식 요청일 경우
+		 * 파라미터들이 URL의 Body영역에 포함되어 넘어옴
+		 * => 별도의 인코딩 처리해야됨
+		 * 유의사항 : 파라미터를 뽑기 전에 setCharacterEncoding()메소드 이용해서 인코딩 처리
+		 * 
+		 */
+		request.setCharacterEncoding("UTF-8"); // utf-8도 상관없음, 한글데이터가 넘어올경우 
+		
+		String name = request.getParameter("name"); // "홍길동" | ""
+		System.out.println("param(name): " + name);
+		
+		int age = Integer.parseInt(request.getParameter("age")); // "20" => 20 | ""=>NumberForamtException
+		System.out.println("param(age): " + age);
+		
+		String[] hobbyList = request.getParameterValues("hobby"); // ["sports", "reading"] | null 
+		System.out.println("param(hobby): " + Arrays.toString(hobbyList));
+		
+		System.out.println("===================================");
 	}
 
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h2>게시글 전체 리스트</h2>
+	
+	<p>
+		조회된 전체 게시글 데이터가 보여지는 자리
+	</p>
+	
+	<button id="write-btn">게시글 작성</button>
+	
+	<script>
+		document.getElementById("write-btn").addEventListener("click", function(){
+			
+			//location.href = '/servlet/e_redirect/boardWrite.html';
+			// 위와 같이 바로 페이지의 경로 작성해서 이동시 URL에 
+			// 해당 애플리케이션 내부 디렉토리가 노출됨 (보안 문제 있음)
+			
+			/*
+				* forward 해야되는 경우 2
+					정적페이지(DB로부터 데이터 조회할 필요 없는) 이동시 이동할 경로를 URL로부터 숨기고자 할 때	
+			*/
+			location.href = '/servlet/writeForm.bo';
+			
+			
+			
+		})
+		
+	</script>
+	
+
+</body>
+</html>

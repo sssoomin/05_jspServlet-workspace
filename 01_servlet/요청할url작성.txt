@@ -1,0 +1,43 @@
+
+상대경로방식으로 URL 작성시에는 현재 출력되고있는 URL 기준으로 이동할 경로가 제시됨 
+절대경로방식(/로 시작하는 경로)으로 URL 작성시에는 무조건 포트번호 뒤에 붙어서 이동할 경로가 제시됨 
+
+URL요청시 에는 반드시 요청한 애플리케이션의 contextPath가 누락되서는 안됨!! 
+즉, http://localhost:8888/contextPath/정적인페이지의경로
+    http://localhost:8888/contextPath/Serlvet의URLMapping
+위와 같이 작성되어야됨 
+
+
+Case1. --------------------------------------------------------------------------------
+
+* 요청하고 싶은 Servlet의 URL : http://localhost:8888/servlet/test1
+* 현재 보여지는 페이지 		  : http://localhost:8888/servlet/abc/def/ghi/main.html 
+                                  
+    <a href="../../../test1">상대경로방식</a>
+        ㄴ ./        : 현재 위치해있는 폴더  (http://localhost:8888/servlet/abc/def/ghi/)
+        ㄴ ../       : 상위 폴더 		     (http://localhost:8888/servlet/abc/def/)
+        ㄴ ../../    : 상위의 상위폴더 	     (http://localhost:8888/servlet/abc/)
+        ㄴ ../../../ : 상위의 상위의 상위폴더(http://localhost:8888/servlet/)    
+
+    <a href="/servlet/test1">절대경로방식</a>
+        ㄴ /시작하는경로(절대경로) : http://localhost:8888 + 절대경로 
+                                     => http://localhost:8888/servlet/test1
+
+
+Case 2. ------------------------------------------------------------------------------
+
+* 요청하고 싶은 Servlet의 URL : http://localhost:8888/servlet/test2
+* 현재 보여지는 페이지        : http://localhost:8888/servlet/abc/def/main.html
+
+    <a href="../../test2">상대경로방식</a>
+    <a href="/servlet/test2">절대경로방식</a>
+
+Case 3. ------------------------------------------------------------------------------
+
+* 요청하고 싶은 정적인 페이지의 URL : http://localhost:8888/servlet/abc/main.html
+* 현재 보여지는 페이지              : http://localhost:8888/servlet/uvw/xyz/main.html
+
+    <a href="../../abc/main.html">상대경로방식</a>
+    <a href="/servlet/abc/main.html">절대경로방식</a>
+
+--------------------------------------------------------------------------------------

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h2>JSP</h2>
+	
+	<!--
+		* Servlet
+		1. 사용자의 요청을 받아 처리한 후 "자바코드를 이용해서 HTML을 작성"해서 응답해주는 Java클래스
+			즉, Java 베이스에 HTML 구현함
+		2. 단점
+			ㄴ 복잡한 웹 화면을 구현하기 어려움
+			ㄴ 비지니스 로직(Java)과 프레젠테이션 로직(HTML)이 같이 기술되어있어 유지보수 불편	
+			
+			* JSP
+			1. Java Server Page
+			2. HTML 베이스에 Java 코드 작성 가능
+			3. 장점
+				ㄴ HTML 기반이기 때문에 웹 화면을 쉽게 구현 가능
+				ㄴ 비지니스 로직(Java)과 프레젠테이션 로직(HTML)을 분리해서 관리할 수 있음
+			4. 실제 동작 원리
+				xxx.jsp ===[변환]===> xxx_jsp.java(서블릿) ===[컴파일]===> xxx_jsp.class ==[실행]==> 클라이언트에게 보여짐
+			5. 구성요소
+				1) HTML / CSS / JavaScript
+				2) JSP 스크립트원소 (Scripting Elements)
+					ㄴ 스크립틀릿
+					ㄴ 표현식
+					ㄴ 선언식
+				3) JSP 지시어 (Directives)
+					ㄴ page지시어
+					ㄴ include지시어
+					ㄴ taglib 지시어
+				4) JSP 액션태그 (Action Tags)	
+					ㄴ 표준 액션 태그
+					ㄴ 커스텀 액션 태그
+								
+	-->
+	
+	<a href="/jsp/a_scripting_element/main.jsp">1. Scripting Elements</a><br>
+	<a href=""></a><br>
+	<a href=""></a><br>
+	<a href=""></a><br>
+
+</body>
+</html>

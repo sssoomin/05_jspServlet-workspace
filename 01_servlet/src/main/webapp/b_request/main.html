@@ -35,9 +35,38 @@
 		
 		<input type="submit" value="요청2">
 	</form>
+	
 	<hr>
 	
 	<h4>Post 방식 요청</h4>
+	
+	<!--
+		* Post 방식 특징
+		1. 요청시 전달되는 데이터가 URL의 Body 영역에서 포함돼서 전달
+			ㄴ URL에 데이터가 노출되지 않음 (보안 유지 가능)
+		2. Body 영역은 전송하는 길이에 대한 제한이 없음
+			ㄴ 방대한 데이터를 전송할 수 있음
+		3. 단, 즐겨찾기 후 재요청시 기존의 데이터가 넘어가지 않음
+			ㄴ 기존에 보던 페이지를 다시 바로 볼 수 없음
+		4. Get방식에 비해 상대적으로 처리 속도가 느림
+			ㄴ 페이지 요청에 있어서 기다리는 시간이 소요될 수 있음
+			
+		적합한 경우 : 로그인 요청, 회원가입 요총, 게시판 작성 및 수정 요청
+		부적합한 경우 : 검색요청				
+	-->
+	
+	<form action="/servlet/request" method="post">
+		이름 : <input type="text" name="name"> <br>
+		나이 : <input type="number" name="age"> <br>
+		취미 : 
+		<input type="checkbox" name="hobby" value="sports"> 운동
+		<input type="checkbox" name="hobby" value="reading">독서
+		<input type="checkbox" name="hobby" value="movie">영화
+		<br><br>
+		
+		<input type="submit" value="요청2">
+	</form>
+	
 	
 
 </body>
