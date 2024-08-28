@@ -45,9 +45,9 @@ public class Response extends HttpServlet {
 		
 		/*
 		 * 1. 응답 Content-type 설정 + UTF-8 인코딩
-		 * 	1) HTML : text / html
-		 * 	2) XML : application / xml
-		 * 	3) JSON : application / json
+		 * 	1) HTML : texthtml
+		 * 	2) XML : application/xml
+		 * 	3) JSON : application/json
 		 * 
 		 */
 		
@@ -85,7 +85,7 @@ public class Response extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response); // doGet으로 결국 토스하고 있음
 								  // get방식 요청이든 post방식 요청이든
-								  // 그냥 편하게 doGet메소드에서 작업하면 됨
+								  // 그냥 편하게 "doGet메소드"에서 작업하면 됨
 	}
 
 }

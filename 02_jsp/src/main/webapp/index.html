@@ -6,15 +6,20 @@
 </head>
 <body>
 	
+	<!-- index.html : web.xml 파일에서 welcome-file로 등록된 파일(메인페이지) -->
 	<h2>JSP</h2>
 	
 	<!--
-		* Servlet
-		1. 사용자의 요청을 받아 처리한 후 "자바코드를 이용해서 HTML을 작성"해서 응답해주는 Java클래스
-			즉, Java 베이스에 HTML 구현함
-		2. 단점
-			ㄴ 복잡한 웹 화면을 구현하기 어려움
-			ㄴ 비지니스 로직(Java)과 프레젠테이션 로직(HTML)이 같이 기술되어있어 유지보수 불편	
+		
+			* Servlet
+			1. 사용자의 요청을 받아 처리한 후 "자바코드를 이용해서 HTML을 작성"해서 응답해주는 Java클래스
+				즉, Java 베이스에 HTML 구현함
+			2. 단점
+				ㄴ 복잡한 웹 화면을 구현하기 어려움
+				ㄴ 비지니스 로직(Java)과 프레젠테이션 로직(HTML)이 같이 기술되어있어 유지보수 불편
+			=> 서블릿명 대문자로 시작 (클래스명과 똑같음)		
+			
+		===================================================================================
 			
 			* JSP
 			1. Java Server Page
@@ -38,12 +43,15 @@
 					ㄴ 표준 액션 태그
 					ㄴ 커스텀 액션 태그
 								
-	-->
+		-->
 	
 	<a href="/jsp/a_scripting_element/main.jsp">1. Scripting Elements</a><br>
-	<a href=""></a><br>
-	<a href=""></a><br>
-	<a href=""></a><br>
+	<a href="/jsp/b_page_directive/main.jsp">2. Page Directive</a><br>
+	<a href="/jsp/c_include_directive/main.jsp">3. Include Directive</a><br>
+	
+	<hr>
+	
+	<a href="/jsp/d_pizza/pizzaOrderForm.jsp">피자 주문 페이지</a><br>
 
 </body>
 </html>

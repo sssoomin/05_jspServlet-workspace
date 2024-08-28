@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  
+  <!-- 
+  	* web.xml
+  	1. 배포서술자 (DD, Deployment Descriptor) 라고 함
+  	2. 서버에서 해당 애플리케이션 구동시 제일 "먼저 읽혀지는 문서"
+  	3. 주로 해당 웹 애플리케이션의 "기본적인 설정" 관련 내용들 작성
+  	4. welcome-file, Servlet, Filter, Wrapper 등을 등록할 수 있음
+   -->
+  
   <display-name>02_jsp</display-name>
+  
+  <!-- 
+  	* welcome-file
+  	1. 서버에 해당 애플리케이션의 contextPath로 URL 요청시 보여지는 메인페이지
+  	2. 주로 index.html 또는 index.jsp를 사용
+  	3. 해당 파일은 src/main/webapp(웹컨테이너)/에 존재해야됨
+  	4. 해당 페이지 요청하는 URL
+  		http://host:port/contextPath
+  		
+  		[참고] contextPath 까지의 URL이 곧 webapp 폴더를 가리킴
+  
+   -->
+   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
@@ -9,4 +31,16 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <!-- 에러창 -->
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/b_page_directive/error500.jsp</location>
+  </error-page>
+  
+   <error-page>
+  	<error-code>404</error-code>
+  	<location>/b_page_directive/error404.jsp</location>
+  </error-page>
+  
 </web-app>

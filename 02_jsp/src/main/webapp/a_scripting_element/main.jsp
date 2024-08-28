@@ -25,10 +25,10 @@
   for(int i=1; i<=ranNum; i++){
 	 sum += i;
   }
-  System.out.println("덧셈결과: " + sum); 
+  System.out.println("덧셈결과: " + sum); // System.out: PrintStream(콘솔창)에 출력
  %>
  
- <b>덧셈결과: <% out.println(sum); %></b> <br>
+ <b>덧셈결과: <% out.println(sum); %></b> <br> <!-- out: JspWrtier(화면)에 출력  -->
  
  <%--
  	2. 표현식 (Expression)
@@ -53,7 +53,7 @@
   배열의 길이: <%= name.length %> <br>
   배열에 담긴 값: <%= String.join("-", name) %> <br>
   
-  <%-- for문 활용 --%>
+  <%-- for문 활용 (반복적으로 요소 생성)--%>
   <ul>
   	<%for(int i=0; i<name.length; i++){ %>
   		<li><%= name[i] %></li>
@@ -69,7 +69,7 @@
     <%! 
      public int getRandom() {
      return (int)(Math.random() * 100 + 1);
-  }
-  %>
+  	}
+  	%>
 </body>
 </html>
