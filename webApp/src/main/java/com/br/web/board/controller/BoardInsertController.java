@@ -7,8 +7,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.br.web.board.model.vo.Attachment;
+import com.br.web.board.model.vo.Board;
 import com.br.web.common.utils.MyFileRenamePolicy;
+import com.br.web.member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
@@ -73,6 +77,32 @@ public class BoardInsertController extends HttpServlet {
 		
 		
 		// 2. DB에 데이터 기록
+		// 	  카테고리번호,제목,내용,작성자회원번호 => Board에 Insert
+		//    첨부파일원본명, 수정명(실제업로드된파일명),저장폴더경로 => Attachment에 Insert (넘어온 첨부파일이 있었을 경우)
+		
+		// 게시글 데이터 => Board에 담기 
+		String boardTitle = multiRequest.getParameter("title");
+		String boardContent = multiRequest.getParameter("content");
+		String category = multiRequest.getParameter("category");
+		
+		HttpSession session = request.getSession();
+		int userNo = ((Member)session.getAttribute("loginUser")).getUserNo();
+		
+		Board b = new Board();
+		b.setBoardTitle(boardTitle);
+		b.setBoardContent(boardContent);
+		b.setCategory(category);
+		b.setBoardWriter(String.valueOf(userNo));
+		
+		// 첨부파일 데이터 => Attachment담기
+		Attachment at = null; // 넘어온 첨부파일이 있을경우 => 생성
+		
+		// * multiRequest.getOriginalFileName("키") : 첨부파일이 있었을 경우 
+		if(multiRequest.getOriginalFileName("upfile") != null) {
+			at = new Attachment();
+			
+		}
+		
 		
 		// 3. 응답
 		
