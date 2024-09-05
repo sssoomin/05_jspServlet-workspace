@@ -1,23 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+<%@ page import="java.util.List" %>
+<%@ page import="com.br.web.board.model.vo.Category"   %>
 
-  <!-- Bootstrap 사용을 위한 CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- ------------------------- -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+  List<Category> list = (List<Category>)request.getAttribute("list");  
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-  
-  <div class="container p-3">
+
+<div class="container p-3">
 
     <!-- Header, Nav start -->
-    <!-- Header, Nav 포함시키기-->
+    <%@ include file = "/views/common/header.jsp" %>
     <!-- Header, Nav end -->
 
 
@@ -27,19 +27,15 @@
 
         <h2 class="m-4">일반게시글 작성</h2>
         
-        <form action="" method="" class="m-4">
+        <form action="<%= contextPath %>/insert.bo" method="post" enctype="multipart/form-data" class="m-4">
           <table class="table">
             <tr>
               <th width="100">카테고리</th>
               <td>
                 <select name="" class="form-control">
-                  <option value="10">공통</option>
-                  <option value="20">운동</option>
-                  <option value="30">등산</option>
-                  <option value="40">게임</option>
-                  <option value="50">낚시</option>
-                  <option value="60">요리</option>
-                  <option value="70">기타</option>
+                <% for(Category c : list) { %>
+                <option value="<%= c.getCategoryNo()%>"><%= c.getCategoryName() %></option>
+                <% } %>  
                 </select>
               </td>
             </tr>
@@ -53,7 +49,7 @@
             </tr>
             <tr>
               <th>첨부파일</th>
-              <td><input type="file"></td>
+              <td><input type="file" name="upfile"></td>
             </tr>
             <tr>
               <td colspan="2" align="center">
@@ -73,12 +69,8 @@
 
 
     <!-- Footer start -->
-    <!-- Footer 포함시키기 -->
+     <%@ include file = "/views/common/footer.jsp" %>
     <!-- Footer end -->
 
-  </div>
-
-
-    
 </body>
 </html>
