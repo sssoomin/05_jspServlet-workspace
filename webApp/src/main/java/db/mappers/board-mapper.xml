@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+	<entry key="selectBoardListCount">
+	
+		select
+	        	count(*) as COUNT
+	from board
+	where 
+	    board_type = 1
+	    and status= 'Y'
+	
+	</entry>
+	
+	<entry key="selectBoardList">
+		SELECT *
+	FROM
+	(       SELECT 
+	        BOARD_NO
+	        ,CATEGORY_NAME
+	        ,BOARD_TITLE
+	        ,USER_ID
+	        ,BOARD_COUNT
+	        ,REGIST_DATE
+	        ,ROW_NUMBER() OVER(ORDER BY BOARD_NO DESC) AS RNUM
+	FROM 
+	        BOARD B
+	JOIN CATEGORY USING(CATEGORY_NO)
+	JOIN MEMBER ON (USER_NO = BOARD_WRITER)
+	WHERE BOARD_TYPE = 1
+	    AND B.STATUS = 'Y'
+	    )
+	    WHERE RNUM BETWEEN ? AND ?
+	
+	</entry>
+
+
+	<entry key="selectCategoryList">
+	 	SELECT
+	 					CATEGORY_NO
+	 				, CATEGORY_NAME
+	 		FROM
+	 				 CATEGORY			
+	</entry>
+	
+	<!-- 일반 게시글 작성 -->
+	<entry key="insertBoard">
+	 	INSERT
+	 		INTO BOARD
+	 		( 
+	 			BOARD_NO
+	 		, BOARD_TYPE
+	 		, CATEGORY_NO
+	 		, BOARD_TITLE
+	 		, BOARD_CONTENT
+	 		, BOARD_WRITER	
+	 		)
+	 		VALUES
+	 		(
+	 			SEQ_BNO.NEXTVAL
+	 		, 1
+	 		, 사용자가선택한 카테고리 번호
+	 		, 사용자가 입력한 제목
+	 		, 사용자가 입력한 내용
+	 		, 로그인한 회원번호	
+	 		)		
+	</entry>
+	
+	<entry key="insertAttachment">
+	 	INSERT
+	 		INTO BOARD
+	 		( 
+	 			FILE_NO
+	 		, REF_BOARD_NO
+	 		, ORIGIN_NAME
+	 		, CHANGE_NAME
+	 		, FILE_PATH	
+	 		)
+	 		VALUES
+	 		(
+	 			SEQ_BNO.NEXTVAL
+	 		, SEQ_BNO.NEXTVAL
+	 		, 첨부파일원본명
+	 		, 실제업로드된파일명
+	 		, 저장폴더경로
+	 		
+	 		)
+	 			
+	</entry>
+	
+	
+
+</properties>

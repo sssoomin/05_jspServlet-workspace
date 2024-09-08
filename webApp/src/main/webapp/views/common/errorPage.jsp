@@ -18,9 +18,7 @@
     <section class="row m-3" style="min-height: 500px">
 
       <div class="container border p-5 m-4 rounded">
-        <h2 class="m-4">해당 페이지의 내용이 보여져야되는 자리</h2>
-        
-      
+        <h2 class="m-4" style="color: orangered;"><%= request.getAttribute("msg") %></h2>
       </div>
 
     </section>
@@ -31,5 +29,7 @@
     <!-- Footer end -->
 
   </div>
+  
+
 </body>
 </html>
