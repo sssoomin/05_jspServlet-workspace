@@ -3,122 +3,132 @@ package com.br.web.board.model.vo;
 import java.sql.Date;
 
 public class Board {
-   private int boardNo;
-   private int boardType;
-   private String category;//join해서 (작성시)카테고리번호, (조회시)명 받아야함
-   private String boardTitle;
-   private String boardContent;
-   private String boardWriter;//join해서 (작성시)번호, (조회시)회원id
-   private int boardCount;
-   private Date registDt;
-   private String status;
-   
-   public Board() {}
+	
+	private int boardNo;
+	private int boardType;
+	private String category;	// 작성하기시 카테고리번호 | 조회시 카테고리명
+	private String boardTitle;
+	private String boardContent;
+	private String boardWriter; // 작성하기시 회원번호 | 조회시 회원아이디
+	private int boardCount;
+	private Date registDt;
+	private String status;
+	
+	private String titleImgURL; // 해당 사진게시글의 대표이미지 경로
+	
+	public Board() {}
 
-   public Board(int boardNo, int boardType, String category, String boardTitle, String boardContent,
-         String boardWriter, int boardCount, Date registDt, String status) {
-      super();
-      this.boardNo = boardNo;
-      this.boardType = boardType;
-      this.category = category;
-      this.boardTitle = boardTitle;
-      this.boardContent = boardContent;
-      this.boardWriter = boardWriter;
-      this.boardCount = boardCount;
-      this.registDt = registDt;
-      this.status = status;
-   }
+	public Board(int boardNo, int boardType, String category, String boardTitle, String boardContent,
+			String boardWriter, int boardCount, Date registDt, String status) {
+		super();
+		this.boardNo = boardNo;
+		this.boardType = boardType;
+		this.category = category;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.boardWriter = boardWriter;
+		this.boardCount = boardCount;
+		this.registDt = registDt;
+		this.status = status;
+	}
+	
+	
 
-   public Board(int boardNo, String category, String boardTitle, String boardContent, String boardWriter,
-         Date registDt) {
-      super();
-      this.boardNo = boardNo;
-      this.category = category;
-      this.boardTitle = boardTitle;
-      this.boardContent = boardContent;
-      this.boardWriter = boardWriter;
-      this.registDt = registDt;
-   }
-   
-   public int getBoardNo() {
-      return boardNo;
-   }
+	public Board(int boardNo, String category, String boardTitle, String boardWriter, int boardCount, Date registDt) {
+		super();
+		this.boardNo = boardNo;
+		this.category = category;
+		this.boardTitle = boardTitle;
+		this.boardWriter = boardWriter;
+		this.boardCount = boardCount;
+		this.registDt = registDt;
+	}
 
-   public void setBoardNo(int boardNo) {
-      this.boardNo = boardNo;
-   }
+	public int getBoardNo() {
+		return boardNo;
+	}
 
-   public int getBoardType() {
-      return boardType;
-   }
+	public String getTitleImgURL() {
+		return titleImgURL;
+	}
 
-   public void setBoardType(int boardType) {
-      this.boardType = boardType;
-   }
+	public void setTitleImgURL(String titleImgURL) {
+		this.titleImgURL = titleImgURL;
+	}
 
-   public String getCategory() {
-      return category;
-   }
+	public void setBoardNo(int boardNo) {
+		this.boardNo = boardNo;
+	}
 
-   public void setCategory(String category) {
-      this.category = category;
-   }
+	public int getBoardType() {
+		return boardType;
+	}
 
-   public String getBoardTitle() {
-      return boardTitle;
-   }
+	public void setBoardType(int boardType) {
+		this.boardType = boardType;
+	}
 
-   public void setBoardTitle(String boardTitle) {
-      this.boardTitle = boardTitle;
-   }
+	public String getCategory() {
+		return category;
+	}
 
-   public String getBoardContent() {
-      return boardContent;
-   }
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
-   public void setBoardContent(String boardContent) {
-      this.boardContent = boardContent;
-   }
+	public String getBoardTitle() {
+		return boardTitle;
+	}
 
-   public String getBoardWriter() {
-      return boardWriter;
-   }
+	public void setBoardTitle(String boardTitle) {
+		this.boardTitle = boardTitle;
+	}
 
-   public void setBoardWriter(String boardWriter) {
-      this.boardWriter = boardWriter;
-   }
+	public String getBoardContent() {
+		return boardContent;
+	}
 
-   public int getBoardCount() {
-      return boardCount;
-   }
+	public void setBoardContent(String boardContent) {
+		this.boardContent = boardContent;
+	}
 
-   public void setBoardCount(int boardCount) {
-      this.boardCount = boardCount;
-   }
+	public String getBoardWriter() {
+		return boardWriter;
+	}
 
-   public Date getRegistDt() {
-      return registDt;
-   }
+	public void setBoardWriter(String boardWriter) {
+		this.boardWriter = boardWriter;
+	}
 
-   public void setRegistDt(Date registDt) {
-      this.registDt = registDt;
-   }
+	public int getBoardCount() {
+		return boardCount;
+	}
 
-   public String getStatus() {
-      return status;
-   }
+	public void setBoardCount(int boardCount) {
+		this.boardCount = boardCount;
+	}
 
-   public void setStatus(String status) {
-      this.status = status;
-   }
+	public Date getRegistDt() {
+		return registDt;
+	}
 
-   @Override
-   public String toString() {
-      return "Board [boardNo=" + boardNo + ", boardType=" + boardType + ", category=" + category + ", boardTitle="
-            + boardTitle + ", boardContent=" + boardContent + ", boardWriter=" + boardWriter + ", boardCount="
-            + boardCount + ", registDt=" + registDt + ", status=" + status + "]";
-   }
-   
-   
-   
-}//end
+	public void setRegistDt(Date registDt) {
+		this.registDt = registDt;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Board [boardNo=" + boardNo + ", boardType=" + boardType + ", category=" + category + ", boardTitle="
+				+ boardTitle + ", boardContent=" + boardContent + ", boardWriter=" + boardWriter + ", boardCount="
+				+ boardCount + ", registDt=" + registDt + ", status=" + status + "]";
+	}
+	
+}

@@ -20,7 +20,7 @@
       <div class="container border p-5 m-4 rounded">
         <h2 class="m-4">마이페이지</h2>
         
-        <form action="<%= contextPath %>/update.me" method="post" class="m-4">
+        <form action="<%= contextPath%>/update.me" method="post" class="m-4">
           <table class="table">
             <tr>
               <th>* 아이디</th>

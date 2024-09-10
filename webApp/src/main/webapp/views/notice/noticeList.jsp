@@ -59,24 +59,24 @@
 	          </tr>
 	          <tr class="board-content collapse" id="notice<%=n.getNoticeNo()%>">
 	            <td colspan="4">
-	              <p class="border rounded p-3 w-75 mx-auto" style="min-height: 150px;"><%= n.getNoticeContent() %></p>
+	              <p class="border rounded p-3 w-75 mx-auto" style="min-height: 150px; white-space:pre;"><%= n.getNoticeContent() %></p>
 	              
 	              <% if(loginUser != null && loginUser.getUserId().equals(n.getNoticeWriter())) { %>
 	              <div align="center">
 	                <a href="<%= contextPath %>/modify.no?no=<%= n.getNoticeNo() %>" class="btn btn-secondary btn-sm">수정하기</a>
-	                <button type="button" class="btn btn-danger btn-sm">삭제하기</button>
+	                <a href="<%= contextPath %>/delete.no?no=<%= n.getNoticeNo() %>" class="btn btn-danger btn-sm">삭제하기</a>
 	              </div>
 	              <%--
-	              
 	              	* 공지사항 삭제하기 과제 *
-	              		삭제하기 버튼 클릭시 /delete.no 요청하도록
-	              		이때 삭제할 글번호 넘기기
-	              		
-	              		미리 작성해둔 쿼리 실행후
-	              		성공일 경우 다시 목록페이지가 보여지도록, alert메세지로 성공메세지
-	              		실패일 경우 에러페이지 보여지도록, 에레메세지 출력되도록
-	              		
-	               --%>
+	              	  삭제하기 버튼 클릭시 /delete.no 요청하도록 
+	              	  이때 삭제할 글번호 넘기기 
+	              	  
+	              	  미리작성해둔 쿼리 실행 후 
+	              	  
+	              	  성공일 경우 다시 목록페이지가 보여지도록, alert메세지로 성공메세지
+	              	  실패일 경우 에러페이지 보여지도록, 에러메세지 출력되도록
+	              --%>
+	              
 	              <% } %>
 	            </td>
 	          </tr>

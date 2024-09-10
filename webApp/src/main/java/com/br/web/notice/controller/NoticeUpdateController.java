@@ -14,7 +14,7 @@ import com.br.web.notice.model.vo.Notice;
 /**
  * Servlet implementation class NoticeUpdateController
  */
-@WebServlet("/NoticeUpdateController")
+@WebServlet("/update.no")
 public class NoticeUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,7 +30,7 @@ public class NoticeUpdateController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
 		// 1. 요청
 		request.setCharacterEncoding("UTF-8");
 		
@@ -45,15 +45,17 @@ public class NoticeUpdateController extends HttpServlet {
 		if(result > 0) { // 성공
 			// 응답페이지 : 다시 목록페이지
 			//     데이터 : "성공적으로 공지사항이 수정되었습니다" alert메세지
-			request.getSession().setAttribute("alertMsg", "성공적으로 공지사항이 수정되었습니다");
+			request.getSession().setAttribute("alertMsg", "성공적으로 공지사항이 수정되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/list.no");
 			
-		}else {
-			//실패
+		}else { // 실패
 			// 응답페이지 : 에러페이지
 			//     데이터 : "공지사항 변경 실패" 메세지
+			
 		}
+	
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

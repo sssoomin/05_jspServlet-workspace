@@ -63,7 +63,7 @@
 			 SET 
 			 		 STATUS = 'N'
 		 WHERE 
-		 			 NOTICE_NO = 특정 게시글 번호
+		 			 NOTICE_NO = ?
 	</entry>
 	
 	

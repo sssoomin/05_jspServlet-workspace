@@ -30,17 +30,19 @@ public class NoticeModifyController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
 		// 1. 요청
 		int noticeNo = Integer.parseInt(request.getParameter("no")); // 수정할 글 번호
 		
 		Notice n = new NoticeService().selectNoticeByNo(noticeNo);
+		// 글번호, 글제목, 글내용
 		
 		// 2. 응답
-		//  	ㄴ 응답페이지 :  수정페이지 (/views/notice/noticeModify.jsp)
-		// 		ㄴ 응답데이터 :  수정할 해당 게시글의 제목, 내용 (db로부터 조회)
+		//	  ㄴ 응답페이지 : 수정페이지 (/views/notice/noticeModify.jsp)
+		//	  ㄴ 응답데이터 : 수정할 해당 게시글의 제목, 내용 (db로 부터 조회)
 		request.setAttribute("n", n);
 		request.getRequestDispatcher("/views/notice/noticeModify.jsp").forward(request, response);
+	
 	}
 
 	/**

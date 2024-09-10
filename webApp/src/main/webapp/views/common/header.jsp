@@ -72,7 +72,7 @@
     <div>
       <b><%= loginUser.getUserName() %></b>님 환영합니다. <br><br>
 
-      <a href="<%=contextPath%>/myinfo.me">>마이페이지</a>
+      <a href="">마이페이지</a>
       <a href="<%=contextPath%>/logout.me">로그아웃</a>
     </div>
     <% } %>
