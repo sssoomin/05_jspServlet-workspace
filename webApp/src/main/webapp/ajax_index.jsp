@@ -224,7 +224,52 @@
 	
 	
 	
+	<h3>4. 조회 요청후 조회된 데이터가 List라는 가정하에 응답하기</h3>
 	
+	<button onclick="fnAjaxTest4();">공지사항 목록조회</button>
+	<br> <br>
+	
+	<table id="output4">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>내용</th>
+				<th>작성자</th>
+			</tr>
+		</thead>
+		<tbody>
+				
+		</tbody>
+	</table>
+	
+	<script>
+		function fnAjaxTest4(){
+			$.ajax({
+				url: '/web/test4.do',
+				success: function(res){
+					console.log(res); // [{Notice객체}, {Notice객체}, {}, ...]
+					
+					let trEl = "";
+					for(let i=0; i<res.length; i++){
+						trEl += '<tr>'
+									+    '<td>' + res[i].noticeNo  + '</td>'
+									+    '<td>' + res[i].noticeTitle + '</td>'
+									+    '<td>' + res[i].noticeContent + '</td>'
+									+    '<td>' + res[i].noticeWriter + '</td>'
+									+ '</tr>';
+					}
+					
+					$('#output4 tbody').html(trEl);
+				},
+				error: function(){
+					console.log('ajax4 통신 실패')
+				}
+				
+			})
+			
+		}
+	</script>
 	
 	
 </body>

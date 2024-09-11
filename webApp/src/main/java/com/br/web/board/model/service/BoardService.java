@@ -14,6 +14,7 @@ import com.br.web.board.model.dao.BoardDao;
 import com.br.web.board.model.vo.Attachment;
 import com.br.web.board.model.vo.Board;
 import com.br.web.board.model.vo.Category;
+import com.br.web.board.model.vo.Reply;
 import com.br.web.common.model.vo.PageInfo;
 
 public class BoardService {
@@ -169,6 +170,26 @@ public class BoardService {
 		
 	}
 	
+	public List<Reply> selectReplyList(int boardNo){
+		Connection conn = getConnection();
+		List<Reply> list = bDao.selectReplyList(conn, boardNo);
+		close(conn);
+		return list;
+		
+	}
+	
+	public int insertReply(Reply r) {
+		Connection conn = getConnection();
+		int result = bDao.insertReply(conn, r);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+			
+	}
 	
 
 }

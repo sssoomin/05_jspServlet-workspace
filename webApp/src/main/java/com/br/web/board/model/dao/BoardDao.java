@@ -1,6 +1,9 @@
 package com.br.web.board.model.dao;
 
 import static com.br.web.common.template.JDBCTemplate.close;
+import static com.br.web.common.template.JDBCTemplate.commit;
+import static com.br.web.common.template.JDBCTemplate.getConnection;
+import static com.br.web.common.template.JDBCTemplate.rollback;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,6 +18,7 @@ import java.util.Properties;
 import com.br.web.board.model.vo.Attachment;
 import com.br.web.board.model.vo.Board;
 import com.br.web.board.model.vo.Category;
+import com.br.web.board.model.vo.Reply;
 import com.br.web.common.model.vo.PageInfo;
 
 public class BoardDao {
@@ -427,7 +431,56 @@ public class BoardDao {
 	}
 	
 	
+	public List<Reply> selectReplyList(Connection conn, int boardNo){
+		List<Reply> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReplyList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,  boardNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Reply(rset.getInt("reply_no")
+								  , rset.getString("user_id")
+								  , rset.getString("reply_content")
+								  , rset.getString("regist_date")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 	
+	public int insertReply(Connection conn, Reply r) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,  r.getReplyWriter());
+			pstmt.setString(2, r.getReplyContent());
+			pstmt.setInt(3, r.getRefBoardNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+			
+	}
+	
+
 	
 
 }

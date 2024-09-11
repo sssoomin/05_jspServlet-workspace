@@ -223,7 +223,39 @@
 		    BY BOARD_NO DESC
 	</entry>
 	
+	<entry key="selectReplyList">
+    SELECT
+            REPLY_NO
+         ,  USER_ID
+         ,  REPLY_CONTENT
+         ,  TO_CHAR(REGIST_DATE,'YY/MM/DD HH:MI') as REGIST_DATE
+   		FROM 
+          REPLY R
+      JOIN MEMBER ON (USER_NO = REPLY_WRITER)
+      WHERE 
+            REF_BOARD_NO = ?
+        AND R.STATUS = 'Y'
+      ORDER
+         BY REPLY_NO DESC
+   
+   </entry>
 	
-	
+	<entry key="insertReply">
+		INSERT
+				INTO REPLY
+				( 
+				  REPLY_NO
+				, REPLY_WRITER
+				, REPLY_CONTENT
+				,REF_BOARD_NO
+				)
+				VALUES
+				(
+					SEQ_RNO.NEXTVAL
+				, ?
+				, ?
+				, ?
+				)
+	</entry>
 	
 </properties>
